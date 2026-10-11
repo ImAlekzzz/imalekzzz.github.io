@@ -1,0 +1,298 @@
+@font-face {
+  font-family: "Juxel";
+  src: url("Assets/Fonts/juxel.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --codepen-bg: #1d1e22;
+  --fg: white;
+  --muted: #757575;
+  --font: "Juxel", Didot, "Bodoni MT", Garamond, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+
+html { height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--codepen-bg);
+  color: var(--fg);
+  font-family: var(--font);
+}
+
+/* Home page button layout: MOBILE ONLY (under 900px wide) */
+@media (max-width: 899px) {
+  body.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Show things on one layout only (breakpoint matches the intro / solar layout) */
+@media (max-width: 899px) { .desktop-only { display: none; } }
+@media (min-width: 900px) { .mobile-only { display: none; } }
+
+/* Stage = solar-system svg + the home buttons.
+   On phones it is invisible to layout, so the mobile column is unchanged. */
+.stage { display: contents; }
+#solar { display: none; }
+.solar-hi { display: none; }
+
+/* Desktop home: solar layout (windows 900px and wider) */
+@media (min-width: 900px) {
+  :root {
+    --codepen-bg: #000000;
+    --u: min(calc(100vw / 1600), calc(100vh / 900));
+  }
+
+  body.home { height: 100%; overflow: hidden; }
+
+  .stage {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--u) * 1600);
+    height: calc(var(--u) * 900);
+    translate: -50% -50%;
+  }
+
+  #solar,
+  .stage .container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #solar { display: block; transition: opacity 1.2s ease; }
+  html:not(.started) #solar { opacity: 0; }
+  .stage .container { display: block; }
+
+  .stage .container button {
+    position: absolute;
+    translate: -50% -50%;
+    width: calc(var(--u) * var(--btn-w, 200));
+    height: calc(var(--u) * var(--btn-h, 68));
+    max-width: none;
+    border-radius: calc(var(--u) * var(--btn-r, 16));
+    font-size: max(13px, calc(var(--u) * 26));
+  }
+
+  .solar-hi {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    font-family: var(--font); /* same as the buttons */
+    font-size: max(40px, calc(var(--u) * 96));
+    line-height: 1;
+    color: var(--fg);
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+  }
+  html:not(.started) .solar-hi { opacity: 0; }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+button {
+  height: 80px;
+  width: 240px;
+  max-width: 80vw;
+  border-radius: 16px;
+  border: solid 3px var(--fg);
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+
+  color: var(--fg);
+  font-size: 24px;
+  font-family: var(--font);
+}
+
+button:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+
+/* Square button that holds an svg (back, go, search...) */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  flex: none;
+}
+.icon-btn img { width: 28px; height: 28px; display: block; }
+
+/* Shared page chrome for sub-pages */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 8px 24px 64px;
+}
+
+.spark {
+  position: fixed;
+  width: 30px;
+  height: 8px;
+  border-radius: 3px;
+  background-color: white;
+  transform: none;
+  pointer-events: none;
+  z-index: 20; /* above the intro overlay */
+}
+
+/* Staggered fadeInDown animation for all content elements */
+@keyframes fadeInDown {
+  0%   { opacity: 0; transform: translate3d(0, -40px, 0); }
+  100% { opacity: 1; transform: translateZ(0); }
+}
+
+.animate {
+  animation-duration: 0.6s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.animate:nth-child(1) { animation-delay: 0.05s; }
+.animate:nth-child(2) { animation-delay: 0.12s; }
+.animate:nth-child(3) { animation-delay: 0.19s; }
+.animate:nth-child(4) { animation-delay: 0.26s; }
+.animate:nth-child(5) { animation-delay: 0.33s; }
+.animate:nth-child(6) { animation-delay: 0.40s; }
+.animate:nth-child(7) { animation-delay: 0.47s; }
+.animate:nth-child(8) { animation-delay: 0.54s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate { animation: none; }
+}
+
+.dud { color: var(--muted); }
+
+/* Intro screen (home page, desktop only) */
+.intro {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--codepen-bg);
+  cursor: pointer;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+}
+.intro.leaving { display: flex; opacity: 0; pointer-events: none; }
+
+.intro-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills the whole screen, cropping the edges if needed */
+  will-change: transform;
+}
+
+.intro-hint {
+  position: absolute;
+  bottom: 40px;
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  animation: hintPulse 2s ease-in-out infinite;
+}
+@keyframes hintPulse { 50% { opacity: 0.35; } }
+.intro.zooming .intro-hint { animation: none; opacity: 0; transition: opacity 0.3s ease; }
+
+@media (min-width: 900px) {
+  html:not(.started) .intro { display: flex; }
+  /* hold the buttons back until the intro is dismissed, then they drop in */
+  html:not(.started) body.home .container .animate { animation-name: none; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-hint { animation: none; }
+}
+
+/* ------------------------------------------------------------------ *
+ * TEXT LINKS: stripes sweep across and weave through the letters.
+ * script.js turns every plain-text <a> into this (opt out with class="no-fancy").
+ * Tweak the colors / stripe position per link or globally here. <- important if you want to fork
+ * ------------------------------------------------------------------ */
+.fancy-link {
+  --stripe-a: #b8b8b8; /* light grey (sweeps in first) */
+  --stripe-b: #dcdcdc; /* lighter grey */
+  --stripe-c: #ffffff; /* white (ends on top) */
+  --stripe-top: 0.62em; /* where the line sits; raise or lower to match the font */
+  --stripe-h: 0.1em;    /* line thickness */
+
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.fancy-letters { display: flex; }
+.fancy-letters-top { position: absolute; top: 0; left: 0; display: flex; }
+.fancy-letter { display: block; will-change: transform, opacity; }
+
+/* odd letters sit under the stripes, even letters over them */
+.fancy-letters .fancy-letter:nth-child(2n) { opacity: 0; }
+.fancy-letters-top .fancy-letter:nth-child(2n + 1) { opacity: 0; }
+
+.fancy-stripe {
+  position: absolute;
+  left: 0;
+  top: var(--stripe-top);
+  width: calc(100% + 0.075em);
+  height: var(--stripe-h);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0, 1);
+}
+.fancy-stripe--a { background-color: var(--stripe-a); transition-delay: 0.1s; }
+.fancy-stripe--b { background-color: var(--stripe-b); transition-delay: 50ms; }
+.fancy-stripe--c { background-color: var(--stripe-c); }
+
+@media (hover: hover) and (pointer: fine) {
+  .fancy-link > * { pointer-events: none; }
+  .fancy-link:hover .fancy-stripe { transform-origin: left; transform: scaleX(1); }
+  .fancy-link:hover .fancy-stripe--a { transition-delay: 0s; }
+  .fancy-link:hover .fancy-stripe--c { transition-delay: 0.1s; }
+}
+
+/* keyboard focus gets the same effect */
+.fancy-link:focus-visible .fancy-stripe { transform-origin: left; transform: scaleX(1); }
+.fancy-link:focus-visible { outline: none; }
+
+/* touch screens have no hover, so mark links with a plain underline */
+@media (hover: none), (pointer: coarse) {
+  .fancy-link { border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fancy-stripe { transition: none; }
+}

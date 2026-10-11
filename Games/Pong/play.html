@@ -1,0 +1,320 @@
+<!DOCTYPE html> 
+<html lang="en-US">
+<head>
+
+<title>Pong</title>
+<link rel="icon" type="image/x-icon" href="icon.svg" />
+<link rel="shortcut icon" type="image/x-icon" href="icon.svg" />
+
+<!-- Standard Setup -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Pre-Connect + Pre-Load -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preload" as="font" type="font/woff2" href="https://turbo.freevideogames.org/includes/fonts/pong/michroma-v11-latin-regular.woff2" crossorigin />
+
+
+<!-- Descriptive Meta Tags -->
+<meta name="description" content="Play the classic Pong game online. No fuss. 100% free." />
+<meta name="keywords" content="Pong Game, pong, pong online, classic arcade game, play pong" />
+<meta name="author" content="The Free Video Games Project" />
+<meta name="copyright" content="&copy; 2005-2023. FreeVideoGames.org. All Rights Reserved." />
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://freepong.org" />
+<meta property="og:site_name" content="FreePong.org" />
+<meta property="og:title" content="Free Pong" />
+<meta property="og:description" content="Play the classic Pong game online. No fuss. 100% free." />
+<meta property="og:image" content="https://freepong.org/images/pong-game-card.png" />
+<meta name="twitter:image:alt" content="Pong Game Screenshot" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- For the Robots -->
+<meta name="robots" content="all" />
+<meta name="revisit-after" content="7 days" />
+
+<!-- Canonical / Favicon -->
+<link rel="canonical" href="https://freepong.org" />
+<link rel="home" href="https://freepong.org" />
+<link rel="icon" type="image/x-icon" sizes="16x16" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="180x180" href="pong-game-icon-180.png">
+
+<!-- iOS Web App Specific -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Pong" />
+<link rel="apple-touch-icon" sizes="180x180" href="pong-game-icon-180.png">
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="https://turbo.freevideogames.org/includes/css/core-game-site.css" />
+<link rel="stylesheet" type="text/css" href="https://turbo.freevideogames.org/includes/css/side-navigation.css" />
+<link rel="stylesheet" type="text/css" href="https://turbo.freevideogames.org/includes/css/pong.css" />
+
+<!-- Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" />
+
+<!-- Scripts -->
+<script src="https://turbo.freevideogames.org/includes/js/core-game-site.js"></script>
+<script src="https://turbo.freevideogames.org/includes/js/screenfull.min.js"></script>
+<script src="howler.min.js"></script>
+<script src="https://turbo.freevideogames.org/includes/js/inmobi3.js" async></script>
+	
+<!-- Plausible Analytics -->
+	  <script defer data-domain="freepong.org" src="https://plausible.io/js/script.js"></script>
+<!-- End Plausible Analytics -->
+	
+<!-- Start Google Adsense Common -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7437598866529614"
+ crossorigin="anonymous"></script>
+<!-- End Google Adsense Common -->
+	
+<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WPCVSGXS');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+	
+<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPCVSGXS"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id='full-page-container'>
+<!-- Header Message -->
+<header>
+	<div id="header-message">
+			</div>		
+</header>
+<!-- End Header Message -->	
+
+
+<!-- Pong Game Container --> 
+	<div id="pong-game-container">
+	
+
+
+<div id="gameArea">
+	<div id="gameModeScreen" class="gameScreenDiv" style="display:none;">
+		<span style="font-size: 100px; font-weight: 800; position: absolute; top: 75px;">PONG</span>
+			<button onclick="SetIsOnePlayerMode(true);"><span class="buttonKey">(1) &nbsp; </span>One Player</button>
+		<button onclick="SetIsOnePlayerMode(false);"><span class="buttonKey">(2) &nbsp; </span>Two Players</button>
+		<div id="soundButtonWrapper">
+			<button id="soundButton" class="soundOn" onclick="SwitchSound();" aria-label="Toggle Sound"></button>
+			<label for="soundButton" class="soundButtonLabel" >SOUND ON / OFF</label>
+		</div>
+		<div id="optionsButton" class="optionsButton" onclick="OpenOptions();">Game Menu</div>
+		<div id="winsDiv">SINGLE PLAYER LIFETIME WINS: <span id="winsStats"></span> <span id="resetStatsButton" style="cursor:pointer;" onclick="ResetLifetime();">(reset)</span></div>
+	</div>
+	<div id="gameOptionsScreen" class="optionsPanel" style="display:none;text-align:center">
+		<div class="singleOption">
+			Score to Win<br/>
+			<button id="score3" onclick="SetScoreToWin(3);">3</button>
+			<button id="score5" onclick="SetScoreToWin(5);">5</button>
+			<button id="score10" onclick="SetScoreToWin(10);">10</button>
+			<button id="score15" onclick="SetScoreToWin(15);">15</button>
+			<button id="score20" onclick="SetScoreToWin(20);">20</button>
+		</div>
+		<div class="singleOption">
+			Ball Slower During Serve<br/>
+			<button id="serve0" onclick="SetServeSlow(false);">No</button>
+			<button id="serve1" onclick="SetServeSlow(true);">Yes</button>
+		</div>
+		<div class="singleOption">
+			Keyboard Sensitivity <br/>
+			<button id="sense0" onclick="SetKeyboardSensitivity(-3);">Low</button>
+			<button id="sense1" onclick="SetKeyboardSensitivity(0);" style="width:220px;">Normal</button>
+			<button id="sense2" onclick="SetKeyboardSensitivity(3);">High</button>
+		</div>
+		<div class="singleOption">
+			Who Starts After a Point<br/>
+			<button id="starts1" onclick="SetStarts(1);" style="width:180px;">Player that scored</button>
+			<button id="starts0" onclick="SetStarts(0);" style="width:220px;">Alternate</button>
+			<button id="starts2" onclick="SetStarts(2);" style="width:180px;">The other Player</button>
+		</div>
+		<div class="singleOption" style="margin-top:20px;">
+			<button onclick="ResetOptions();" style="width:150px;">Reset</button>
+			<button onclick="ShowMainScreen();" style="width:150px;">Back</button>
+		</div>
+	</div>
+
+	<div id="controlModeScreen" class="gameScreenDiv"  style="display:none;">
+		<span style="font-size: 100px; font-weight: 800; position: absolute; top: 75px;">PONG</span>
+		<button onclick="SetControlMode(0);" style="width:260px;"><span class="buttonKey">(k)<br /></span>Keyboard</button>
+		<button onclick="SetControlMode(1);" style="width:260px;"><span class="buttonKey">(m)<br /></span>Mouse</button>
+		<div id="onePlayerInstructionsDiv">
+			P - PAUSE<br/>
+			ESC - QUIT
+		</div>
+	</div>
+	<div id="difficultyScreen" class="gameScreenDiv" style="font-size:18px;display:none">
+		<span style="font-size: 80px; font-weight: 800; position: absolute; top: 50px;">PONG</span>
+		<button id="easyDifficultyButton" onclick="SetDifficulty(0);" style="width:260px;"><span class="buttonKey">(e) &nbsp;</span>Easy</button>
+		<button id="mediumDifficultyButton" onclick="SetDifficulty(1);" style="width:260px;"><span class="buttonKey">(m) &nbsp;</span>Medium</button>
+		<button id="hardDifficultyButton" onclick="SetDifficulty(2);" style="width:260px;"><span class="buttonKey">(h) &nbsp;</span>Hard</button>
+
+		<div id="twoPlayersInstructionsDiv">
+			PLAYER 1 - ARROW KEYS<br/>
+			PLAYER 2 - S + X<br/>
+			P - PAUSE<br/>
+			ESC - QUIT
+		</div>
+	</div>
+	<div id="gameScreen" class="gameScreenDiv"  style="display:none;">
+		<div class="scoreWrapper">
+			<div id="player1Score">0</div>
+			<div id="player2Score">0</div>
+		</div>
+		<div id="pauseDiv">Paused, press P to continue</div>
+		<canvas id="gameCanvas">
+		</canvas>
+	</div>
+	<div id="endGameScreen" style="display:none;">
+		<div id="winMessage">WIN</div>
+		<button onclick="StartGame();"><span class="buttonKey">(r) &nbsp; </span>Play Again</button>
+		<button onclick="ShowMainScreen();"><span class="buttonKey">(esc) &nbsp; </span>Main Menu</button>
+	</div>
+</div>
+<script src="pong-game.js"></script>
+<script> ShowMainScreen();</script>
+
+
+</div>
+
+
+
+<!-- End Pong Game Container --> 
+	
+	
+<!-- Footer Navigation -->
+<footer>
+	<div id="footer-navigation">
+
+	</div>
+</footer>
+<!-- End Footer Navigation -->	
+	
+</div>
+
+
+<!-- Side Navigation -->
+	<nav>
+		<div id="side-navigation">
+	
+				<div id="menuToggle">
+				  <input type="checkbox" aria-label="Show or Hide Menu" id="checkbox1" onclick="menuClick()" />
+					<span></span>
+					<span></span>
+					<span></span>
+					
+				<div id="menu-container">
+					
+					<div id="scrollable-container">
+						
+<div id="left-column">	<!-- Nav Success -->
+	<ul id="menu1">
+	  <li><a href="https://freepacman.org"><img src="https://turbo.freevideogames.org/core-images/menu/pacman-game-logo-180.png" loading="lazy" importance="low" width="180" height="43" alt="Pacman Game Logo" title="Play Pacman"></a></li>
+	  <li><a href="https://happyhopper.org"><img src="https://turbo.freevideogames.org/core-images/menu/frogger-game-logo-180.png" loading="lazy" importance="low" width="180" height="34" alt="Frogger Game Logo" title="Play Frogger"></a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freepong.org"><img src="https://turbo.freevideogames.org/core-images/menu/pong-game-logo-180.png" loading="lazy" importance="low" width="180" height="48" alt="Pong Game Logo" title="Play Pong"></a></li>
+	  <li style="padding-bottom: 0px;"><a href="https://freeasteroids.org"><img src="https://turbo.freevideogames.org/core-images/menu/asteroids-game-logo-180.png" loading="lazy" importance="low" width="180" height="49" alt="Asteroids Game Logo" title="Play Asteroids"></a><sup class="asterisk">*</sup></li>
+	  <li style="padding-bottom: 0px;"><a href="https://freejetpac.org"><img src="https://turbo.freevideogames.org/core-images/menu/jetpac-game-logo-180.png" loading="lazy" importance="low" width="180" height="40" alt="Jetpac Game Logo" title="Play Jetpac"></a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freekong.org"><img src="https://turbo.freevideogames.org/core-images/menu/donkey-kong-game-logo-180.png" loading="lazy" importance="low" width="180" height="62" alt="Donkey Kong Game Logo" title="Play Donkey Kong"></a><sup class="asterisk">*</sup></li>
+	  <li style="padding-top: 0px;"><a href="https://freeflappybird.org"><img src="https://turbo.freevideogames.org/core-images/menu/flappy-bird-game-logo-180.png" loading="lazy" importance="low" width="180" height="64" alt="Flappy Bird Game Logo" title="Play Flappy Bird"></a></li>
+	  <li style="padding-top: 0px;"><a href="https://freefishy.org"><img src="https://turbo.freevideogames.org/core-images/menu/fishy-game-logo-180.png" loading="lazy" importance="low" width="180" height="39" alt="Fishy Game Logo" title="Play Fishy Game"></a><sup class="asterisk">*</sup></li>
+	  <li><button class="more-games-button" onclick="moreClick()">More Games</button></li>		  
+	  <li></li>		
+	</ul>
+</div>
+
+<div id="right-column">
+	<ul id="menu2">
+	  <li><a href="https://freewordle.org" title="Free Wordle">Wordle</a></li>
+	  <li><a href="https://freemahjong.org" title="Play Mahjong Game">Mahjong</a></li>
+	  <li><a href="https://freesolitaire.org" title="Play Solitaire Game">Solitaire</a></li>
+	  <li><a href="https://freeminesweeper.org" title="Play Minesweeper Game">Minesweeper</a></li>
+	  <li><a href="https://theempiregame.com" title="Goodgame Empire">Empire</a></li>
+	  <li><a href="https://thebigfarmgame.com" title="Goodgame Big Farm">Big Farm</a></li>
+	  <li><a href="https://freesonic.org" title="Play Sonic Game">Sonic</a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freeinvaders.org" title="Space Invaders">Space Invaders</a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freegalaga.com" title="Galaga">Galaga</a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freeqbert.org" title="Qbert">Qbert</a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freetennis.org" title="Tennis">Tennis</a><sup class="asterisk">*</sup></li>
+	  <li><a href="https://freesimon.org" title="Simon">Simon</a></li>
+	  <li></li>
+	</ul>
+	<p class="menu-small-text"><sup class="asterisk">*</sup> Requires keyboard - this can be an iPad / Bluetooth keyboard.</p>
+</div>					
+							
+							<div id="menu-bottom">
+								<p><a href="https://freevideogames.org/privacy.html" class="small-link">Privacy</a></p>
+								<p><a href="https://freevideogames.org/copyright.html" class="small-link">Copyright</a></p>
+							</div>
+						</div>
+					</div>
+			   </div>
+	
+		</div>
+	</nav>
+<!-- End Side Navigation -->
+	
+	
+<aside>
+	<div id="full-screen-game-div-button">
+		<!-- Full Screen Game Button -->
+		<nav>
+			<img src="https://turbo.freevideogames.org/core-images/full-screen-game-icon-40.png" width="40" height="40" alt="Full Screen Game Button" title="Go Full Screen" id="full-screen-button" onclick="fullScreenMode()"/>
+		</nav>	
+		<!-- End Full Screen Game Button -->
+	</div>		
+</aside>
+
+<!-- Ad Units -->
+	<div id="leftad">
+
+	</div>
+	
+	<div id="rightad">
+	<!-- N.B. Dynamic ad sizing based on media queries CSS -->
+
+	</div>
+<!-- End Ad Units -->	
+
+	
+	
+<script>
+	// Detect change in full screen mode and do stuff
+	if (screenfull.isEnabled) {
+		screenfull.on('change', () => {
+			
+			var fsb = document.getElementById("full-screen-button");
+			var hm = document.getElementById("header-message");
+			var leftad = document.getElementById("leftad");
+			var rightad = document.getElementById("rightad");
+			var footernav = document.getElementById("footer-navigation");
+			
+			if (screenfull.isFullscreen) {			  
+				  fsb.style.display = "none";
+				  hm.style.display = "none";
+				  leftad.style.display = "none";
+				  rightad.style.display = "none";
+				  footernav.style.display = "none";
+			  }
+			  else {
+				  fsb.style.display = "block";
+				  hm.style.display = "block";
+				  leftad.style.display = "block";
+				  rightad.style.display = "block";
+				  footernav.style.display = "block";
+			  }
+			console.log('Am I fullscreen?', screenfull.isFullscreen ? 'Yes' : 'No');
+		});
+	}	
+</script>
+
+</body>
+</html>

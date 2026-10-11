@@ -1,0 +1,113 @@
+.search {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  top: 0;
+  left: 10;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  overflow: hidden;
+}
+.search svg {
+  width: 300px;
+  transform: translate3d(-125px, 0, 0);
+  transition: 0.5s;
+  pointer-events: none;
+}
+.search input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: Juxel;
+  font-size: 1.5rem;
+  padding: 10px 55px 10px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.search input::-moz-selection {
+  background: rgba(0, 0, 0, 0.3);
+}
+.search input::selection {
+  background: rgba(0, 0, 0, 0.3);
+}
+.search input:valid, .search input:focus {
+  cursor: auto;
+}
+.search input:valid + svg, .search input:focus + svg {
+  transform: translate3d(0, 0, 0);
+}
+.search input:focus {
+  cursor: auto;
+  outline: none;
+}
+.search input:focus + svg .path {
+  stroke-dasharray: 961, 363;
+  stroke-dashoffset: -363;
+}
+.search .path {
+  stroke-dasharray: 363, 961;
+  stroke-dashoffset: 0;
+  stroke: #fff;
+  stroke-width: 10;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: 0.5s;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: solid 3px var(--fg);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+}
+
+.card-icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 12px 16px;
+  border: solid 3px var(--fg);
+  border-radius: 14px;
+  background-color: var(--codepen-bg);
+  object-fit: cover;
+}
+
+.placeholder { background-color: rgba(255, 255, 255, 0.08); }
+.card-icon.placeholder { background-color: var(--codepen-bg); }
+
+.card-body { padding: 0 16px 16px; min-height: 76px; }
+.card-title { margin: 0 0 6px; font-size: 24px; font-weight: normal; }
+.card-desc { margin: 0; padding-right: 64px; font-size: 16px; line-height: 1.5; }
+
+.card-go {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+.card-go img { width: 24px; height: 24px; }

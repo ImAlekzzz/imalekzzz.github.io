@@ -1,0 +1,5 @@
+/* Buttons stay centered in the space under the back button */
+.link-list {
+  min-height: calc(100vh - 190px);
+  justify-content: center;
+}

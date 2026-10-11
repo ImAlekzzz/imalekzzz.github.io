@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Games</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="games.css">
+  <script>
+    /* Games is desktop only: phones and narrow windows go back to the home page */
+    if (!matchMedia("(min-width: 900px)").matches) location.replace("../index.html");
+  </script>
+</head>
+<body>
+  <header class="topbar wide animate">
+    <button class="icon-btn" data-href="../index.html" aria-label="Back">
+      <img src="../Assets/Pictures/back.png" alt="">
+    </button>
+    <div id="search" class="search">
+      <input id="search-input" class="search-input" type="text" placeholder="Search" autocomplete="off" spellcheck="false" tabindex="-1" aria-label="Search">
+      <span class="search-divider"></span>
+      <button id="search-toggle" class="search-toggle" aria-label="Open search" aria-expanded="false">
+        <img class="search-ico" src="../Assets/Pictures/search.png" alt="">
+        <span class="search-x"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page wide">
+    <div id="grid" class="game-grid"></div>
+    <p id="search-empty" class="search-empty" hidden>Nothing found.</p>
+
+    <div class="to-top-wrap">
+      <button id="to-top" class="icon-btn" aria-label="Back to top">
+        <img src="../Assets/Pictures/up.png" alt="">
+      </button>
+    </div>
+  </main>
+
+  <script src="../script.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

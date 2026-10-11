@@ -1,0 +1,340 @@
+{
+  "games": [
+    {
+      "folder": "Among Us",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Angry Birds",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Bad Parenting",
+      "background borders": "yes",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Bitlife",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Bloons Tower Defense",
+      "background borders": "no",
+      "version1": "play_5.html",
+      "v1version": "5",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Chess",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Crossy Road",
+      "background borders": "no",
+      "version1": "play.htm",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Duck Life",
+      "background borders": "no",
+      "version1": "play_5.html",
+      "v1version": "5",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Eaglercraft",
+      "background borders": "no",
+      "version1": "play_1.8.8.html",
+      "v1version": "1.8.8",
+      "version2": "play_1.12.2.html",
+      "v2version": "1.12.2"
+    },
+    {
+      "folder": "Five Nights At Freddys",
+      "background borders": "no",
+      "version1": "play_2.html",
+      "v1version": "2",
+      "version2": "play_4.html",
+      "v2version": "4"
+    },
+    {
+      "folder": "Flappy Bird",
+      "background borders": "yes",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Friday Night Funkin",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Fruit Ninja",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Jetpack Joyride",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Minesweeper",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Pac-Man",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Bakeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Burgeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Cheeseria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Cupcakeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Donuteria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Freezeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Hot Doggeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Pancakeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Pastaria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Scooperia",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Shushiria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Papa's Wingeria",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "paper.io",
+      "background borders": "yes",
+      "version1": "play.htm",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Plants vs Zombies",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Polytrack",
+      "background borders": "yes",
+      "version1": "play_0.4.html",
+      "v1version": "0.4",
+      "version2": "play_0.6.2.html",
+      "v2version": "0.6.2"
+    },
+    {
+      "folder": "Pong",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Run",
+      "background borders": "no",
+      "version1": "play_3.html",
+      "v1version": "3",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Slither.io",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Space Invaders",
+      "background borders": "yes",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Subway Surfers",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Super Mario Bros",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Tetris",
+      "background borders": "no",
+      "version1": "play_sfx.html",
+      "v1version": "sfx",
+      "version2": "play_simple.html",
+      "v2version": "simple"
+    },
+    {
+      "folder": "The Impossible Quiz",
+      "background borders": "yes",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "The World's Hardest Game",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Tic Tac Toe",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    },
+    {
+      "folder": "Wordle Unlimited",
+      "background borders": "no",
+      "version1": "play.html",
+      "v1version": "",
+      "version2": "",
+      "v2version": ""
+    }
+  ]
+}

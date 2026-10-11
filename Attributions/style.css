@@ -1,0 +1,3 @@
+.about { max-width: 62ch; margin-left: auto; margin-right: auto; }
+.about h1 { font-size: 40px; font-weight: normal; margin: 0 0 16px; }
+.about p { font-size: 20px; line-height: 1.6; margin: 0 0 1em; }
