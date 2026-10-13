@@ -8,7 +8,9 @@
  *   -> /Assets/Pictures/my-banner.jpg
  *
  * Leave banner or icon as "" to show asset_missing.png.
- * Leave link as "" to hide the go button.
+ *
+ * Buttons (bottom-right, left to right): docs, github, link (the project).
+ * Leave a field out or as "" and that button is not shown.
  *
  * Keywords are used by the search bar. The title and description
  * are also searchable.
@@ -21,7 +23,7 @@ const PROJECTS = [
     banner: "Pictures/Projects/2pbb.svg",
     icon: "Pictures/Projects/2pb.png",
 
-    title: "2 Player Games",
+    title: "2 Player Battles",
     description: "Local 2 Player Game.",
 
     keywords: [
@@ -37,14 +39,13 @@ const PROJECTS = [
       "party game"
     ],
 
+    docs: "https://example.com",
+    github: "https://github.com/ImAlekzzz/",
     link: "https://imalekzzz.itch.io/2-player-battles",
   },
 ];
 
 
-/* ------------------------------------------------------------------ *
- * RENDERING
- * ------------------------------------------------------------------ */
 
 const make = (tag, className, props = {}) =>
   Object.assign(document.createElement(tag), {
@@ -52,14 +53,19 @@ const make = (tag, className, props = {}) =>
     ...props
   });
 
+const ACTIONS = [
+  { key: "docs",   icon: "Pictures/docs.png", label: "Docs" },
+  { key: "github", icon: "Pictures/code.svg", label: "Code" },
+  { key: "link",   icon: "Pictures/go.png",   label: "Open" },
+];
+
 
 function renderCard(p) {
   const card = make("article", "card");
 
-  // Title scrambles when the card is hovered
+  // Title scrambles when card is hovered
   card.dataset.hoverScramble = "";
 
-  // Banner
   card.append(
     make("img", "card-banner", {
       src: p.banner ? ASSETS + p.banner : MISSING_IMG_URL,
@@ -67,7 +73,6 @@ function renderCard(p) {
     })
   );
 
-  // Icon
   card.append(
     make("img", "card-icon", {
       src: p.icon ? ASSETS + p.icon : MISSING_IMG_URL,
@@ -75,7 +80,6 @@ function renderCard(p) {
     })
   );
 
-  // Card body
   const body = make("div", "card-body");
 
   const title = make("h2", "card-title", {
@@ -93,30 +97,26 @@ function renderCard(p) {
 
   card.append(body);
 
-  // Go button
-  if (p.link) {
-    const go = make("button", "icon-btn card-go");
-
-    go.dataset.href = p.link;
-    go.setAttribute("aria-label", `Open ${p.title}`);
-
-    go.append(
-      make("img", "", {
-        src: ASSETS + "Pictures/go.png",
-        alt: ""
-      })
-    );
-
-    card.append(go);
+  // Buttons: docs, github, project (only the ones the card has)
+  const buttons = ACTIONS.filter((a) => p[a.key]);
+  if (buttons.length) {
+    card.classList.toggle("multi", buttons.length > 1); // more than 1 button get their own row
+    const row = make("div", "card-actions");
+    buttons.forEach((a) => {
+      const wrap = make("span", "act");
+      const btn = make("button", "icon-btn card-go");
+      btn.dataset.href = p[a.key];
+      btn.setAttribute("aria-label", `${a.label}: ${p.title}`);
+      btn.append(make("img", "", { src: ASSETS + a.icon, alt: "" }));
+      wrap.append(btn, make("span", "card-tip", { textContent: a.label }));
+      row.append(wrap);
+    });
+    card.append(row);
   }
 
   return card;
 }
 
-
-/* ------------------------------------------------------------------ *
- * PROJECT DISPLAY
- * ------------------------------------------------------------------ */
 
 const cardsContainer = document.getElementById("cards");
 
@@ -149,16 +149,14 @@ renderProjects(PROJECTS);
 
 const searchInput = document.querySelector(".search input");
 
-searchInput.addEventListener("input", () => {
+if (searchInput) searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim().toLowerCase();
 
-  // Empty search = show everything
   if (!query) {
     renderProjects(PROJECTS);
     return;
   }
 
-  // Split the search into individual words
   const terms = query.split(/\s+/);
 
   const filteredProjects = PROJECTS.filter(project => {
