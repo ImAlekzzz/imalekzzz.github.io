@@ -102,12 +102,38 @@
 .card-title { margin: 0 0 6px; font-size: 24px; font-weight: normal; }
 .card-desc { margin: 0; padding-right: 64px; font-size: 16px; line-height: 1.5; }
 
-.card-go {
+/* Buttons, bottom-right: docs, github, project (only the ones a card has) */
+.card-actions {
   position: absolute;
   right: 16px;
   bottom: 16px;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  display: flex;
+  gap: 8px;
 }
+.act { position: relative; }
+.card-go { width: 48px; height: 48px; border-radius: 12px; }
 .card-go img { width: 24px; height: 24px; }
+
+/* Small label above a button on hover */
+.card-tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  translate: -50% 0;
+  padding: 4px 10px;
+  border: solid 2px var(--fg);
+  border-radius: 10px;
+  background-color: var(--codepen-bg);
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.act:last-child .card-tip { left: auto; right: 0; translate: none; }
+.act:hover .card-tip,
+.act:focus-within .card-tip { opacity: 1; }
+
+/* 2-3 buttons: they get their own row under the text */
+.card.multi .card-body { padding-bottom: 76px; }
+.card.multi .card-desc { padding-right: 0; }
