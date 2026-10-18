@@ -37,7 +37,7 @@ const PROJECTS = [
       "fighting",
       "competitive",
       "party game"
-    ]
+    ],
     link: "https://imalekzzz.itch.io/2-player-battles",
   },
 ];
