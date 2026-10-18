@@ -37,10 +37,7 @@ const PROJECTS = [
       "fighting",
       "competitive",
       "party game"
-    ],
-
-    docs: "https://example.com",
-    github: "https://github.com/ImAlekzzz/",
+    ]
     link: "https://imalekzzz.itch.io/2-player-battles",
   },
 ];
