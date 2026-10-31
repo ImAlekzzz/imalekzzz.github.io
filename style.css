@@ -241,9 +241,9 @@ button:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
  * Tweak the colors / stripe position per link or globally here. <- important if you want to fork
  * ------------------------------------------------------------------ */
 .fancy-link {
-  --stripe-a: #b8b8b8; /* light grey (sweeps in first) */
-  --stripe-b: #dcdcdc; /* lighter grey */
-  --stripe-c: #ffffff; /* white (ends on top) */
+  --stripe-a: #808080; /* light grey (sweeps in first) */
+  --stripe-b: #525252; /* lighter grey */
+  --stripe-c: #696969; /* grey (ends on top) */
   --stripe-top: 0.62em; /* where the line sits; raise or lower to match the font */
   --stripe-h: 0.1em;    /* line thickness */
 
