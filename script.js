@@ -1,3 +1,4 @@
+// @dangerthefox im not tracking you dude
 /* ------------------------------------------------------------------ *
  * MISSING IMAGES
  * Any image that fails to load (or is left blank) shows
@@ -206,7 +207,7 @@ class TextScramble {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
   }
 }
-
+// still convinced i will get your ip?
 const scramblers = new WeakMap();
 const getScrambler = (el) => {
   if (!scramblers.has(el)) scramblers.set(el, new TextScramble(el));
@@ -408,7 +409,7 @@ document.addEventListener("DOMContentLoaded", initInViewText);
     if (drawn.has(key)) return; // one line per orbit, even if two buttons share it
     drawn.add(key);
     make("ellipse", { cx: CX, cy: CY, rx: o.rx, ry: o.ry, transform: `rotate(${TILT} ${CX} ${CY})` }, lines);
-  });
+  }); // dude theres no reason to search
 
   buttons.forEach((btn, i) => {
     const p = spots[i];
@@ -533,3 +534,4 @@ const applySearch = () => {
     if (e.key === "Escape") { setOpen(false); toggle.focus(); }
   });
 })();
+// its the end of the code, see, i dont track you and i wont spy on you NOW CLICK THE LINK
