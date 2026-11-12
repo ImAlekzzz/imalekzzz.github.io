@@ -354,6 +354,7 @@ document.addEventListener("DOMContentLoaded", initInViewText);
     { rx: 720, ry: 310, angle: 30 },  // Socials
     { rx: 720, ry: 310, angle: 70 },  // Attributions (Same orbit as Socials)
     { rx: 570, ry: 245, angle: 258 }, // Games (Same orbit as Links)
+    { rx: 720, ry: 310, angle: 200 }, // Blogs
   ];
   // -------------------
 
