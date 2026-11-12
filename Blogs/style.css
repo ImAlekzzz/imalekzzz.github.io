@@ -75,25 +75,6 @@
   overflow: hidden;
 }
 
-.card-banner {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
-}
-
-.card-icon {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 12px 16px;
-  border: solid 3px var(--fg);
-  border-radius: 14px;
-  background-color: var(--codepen-bg);
-  object-fit: cover;
-}
 
 .placeholder { background-color: rgba(255, 255, 255, 0.08); }
 .card-icon.placeholder { background-color: var(--codepen-bg); }
