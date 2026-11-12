@@ -19,7 +19,7 @@
 const ASSETS = "../Assets/";
 
 const PROJECTS = [
-  {
+ /* {
     banner: "Pictures/Projects/2pbb.svg",
     icon: "Pictures/Projects/2pb.png",
 
@@ -39,7 +39,20 @@ const PROJECTS = [
       "party game"
     ],
     link: "https://imalekzzz.itch.io/2-player-battles",
-  },
+  }, */
+  {
+    title: "I Know Your OS",
+    description: "sudo pacman -S opsec",
+
+    keywords: [
+      "stupid",
+      "Linux",
+      "Windows",
+      "MacOS"
+      ],
+    link: "https://imalekzzz.github.io/IKnowYourOS",
+    github: "https://github.com/imalekzzz/IKnowYourOS"
+  }
 ];
 
 
