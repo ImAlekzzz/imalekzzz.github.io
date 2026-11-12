@@ -41,8 +41,8 @@ const PROJECTS = [
     link: "https://imalekzzz.itch.io/2-player-battles",
   }, */
   {
-   banner: "Pictures/Projects/ikyos_banner.png"
-    icon: "Pictures/Projects/ikyos_icon.png"
+   banner: "/Assets/Pictures/Projects/ikyos_banner.png"
+    icon: "/Assets/Pictures/Projects/ikyos_icon.png"
     title: "I Know Your OS",
     description: "sudo pacman -S opsec",
 
