@@ -1,13 +1,7 @@
 /* ------------------------------------------------------------------ *
- * PROJECT CARDS
+ * BLOG CARDS
  *
  * To add a card, copy one group below and fill it in.
- *
- * Paths for banner/icon are relative to the Assets folder, e.g.
- *   banner: "Pictures/my-banner.jpg"
- *   -> /Assets/Pictures/my-banner.jpg
- *
- * Leave banner or icon as "" to show asset_missing.png.
  *
  * Buttons (bottom-right, left to right): docs, github, link (the project).
  * Leave a field out or as "" and that button is not shown.
@@ -16,47 +10,24 @@
  * are also searchable.
  * ------------------------------------------------------------------ */
 
-const ASSETS = "../Assets/";
 
-const PROJECTS = [
- /* {
-    banner: "Pictures/Projects/2pbb.svg",
-    icon: "Pictures/Projects/2pb.png",
+const BLOGS = [
+ {
 
-    title: "2 Player Battles",
-    description: "Local 2 Player Game.",
+title: "Test",
+description: "TEstestsetstests",
 
-    keywords: [
-      "2 player",
-      "two player",
-      "multiplayer",
-      "local multiplayer",
-      "coop",
-      "co-op",
-      "battle",
-      "fighting",
-      "competitive",
-      "party game"
-    ],
-    link: "https://imalekzzz.itch.io/2-player-battles",
-  }, */
-  {
-   banner: "Pictures/Projects/ikyos_banner.png",
-   icon: "Pictures/Projects/ikyos_icon.png",
+keywords: [
+"hey",
+"this",
+"is",
+"a",
+"test"
+],
 
-   
-    title: "I Know Your OS",
-    description: "sudo pacman -S opsec",
-
-    keywords: [
-      "stupid",
-      "Linux",
-      "Windows",
-      "MacOS"
-      ],
-    link: "https://imalekzzz.github.io/IKnowYourOS",
-    github: "https://github.com/imalekzzz/IKnowYourOS"
-  },
+link: "example.com",
+docs: "example.com",
+},
 ];
 
 
@@ -69,7 +40,6 @@ const make = (tag, className, props = {}) =>
 
 const ACTIONS = [
   { key: "docs",   icon: "Pictures/docs.png", label: "Docs" },
-  { key: "github", icon: "Pictures/code.svg", label: "Code" },
   { key: "link",   icon: "Pictures/go.png",   label: "Open" },
 ];
 
@@ -79,20 +49,6 @@ function renderCard(p) {
 
   // Title scrambles when card is hovered
   card.dataset.hoverScramble = "";
-
-  card.append(
-    make("img", "card-banner", {
-      src: p.banner ? ASSETS + p.banner : MISSING_IMG_URL,
-      alt: ""
-    })
-  );
-
-  card.append(
-    make("img", "card-icon", {
-      src: p.icon ? ASSETS + p.icon : MISSING_IMG_URL,
-      alt: ""
-    })
-  );
 
   const body = make("div", "card-body");
 
@@ -111,7 +67,7 @@ function renderCard(p) {
 
   card.append(body);
 
-  // Buttons: docs, github, project (only the ones the card has)
+  // Buttons: docs, project (only the ones the card has)
   const buttons = ACTIONS.filter((a) => p[a.key]);
   if (buttons.length) {
     card.classList.toggle("multi", buttons.length > 1); // more than 1 button get their own row
@@ -121,7 +77,6 @@ function renderCard(p) {
       const btn = make("button", "icon-btn card-go");
       btn.dataset.href = p[a.key];
       btn.setAttribute("aria-label", `${a.label}: ${p.title}`);
-      btn.append(make("img", "", { src: ASSETS + a.icon, alt: "" }));
       wrap.append(btn, make("span", "card-tip", { textContent: a.label }));
       row.append(wrap);
     });
@@ -134,14 +89,14 @@ function renderCard(p) {
 
 const cardsContainer = document.getElementById("cards");
 
-function renderProjects(projects) {
+function renderBlogs(projects) {
   cardsContainer.replaceChildren(
     ...projects.map(renderCard)
   );
 }
 
-// Show all projects when the page loads
-renderProjects(PROJECTS);
+// Show all blogs when the page loads
+renderBlogs(BLOGS);
 
 
 /* ------------------------------------------------------------------ *
@@ -167,13 +122,13 @@ if (searchInput) searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim().toLowerCase();
 
   if (!query) {
-    renderProjects(PROJECTS);
+    renderBlogs(BLOGS);
     return;
   }
 
   const terms = query.split(/\s+/);
 
-  const filteredProjects = PROJECTS.filter(project => {
+  const filteredBlogs = BLOGS.filter(project => {
     // Combine everything that should be searchable
     const searchableText = [
       project.title,
@@ -189,5 +144,5 @@ if (searchInput) searchInput.addEventListener("input", () => {
     );
   });
 
-  renderProjects(filteredProjects);
+  renderBlogs(filteredBlogs);
 });
