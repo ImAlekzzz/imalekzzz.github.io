@@ -54,7 +54,7 @@ const PROJECTS = [
       ],
     link: "https://imalekzzz.github.io/IKnowYourOS",
     github: "https://github.com/imalekzzz/IKnowYourOS"
-  }
+  },
 ];
 
 
