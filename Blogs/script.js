@@ -11,23 +11,9 @@
  * ------------------------------------------------------------------ */
 
 
+const ASSETS = "../Assets/";
+
 const BLOGS = [
- {
-
-title: "Test",
-description: "TEstestsetstests",
-
-keywords: [
-"hey",
-"this",
-"is",
-"a",
-"test"
-],
-
-link: "example.com",
-docs: "example.com",
-},
 ];
 
 
@@ -77,6 +63,7 @@ function renderCard(p) {
       const btn = make("button", "icon-btn card-go");
       btn.dataset.href = p[a.key];
       btn.setAttribute("aria-label", `${a.label}: ${p.title}`);
+      btn.append(make("img", "", { src: ASSETS + a.icon, alt: "" }));
       wrap.append(btn, make("span", "card-tip", { textContent: a.label }));
       row.append(wrap);
     });
