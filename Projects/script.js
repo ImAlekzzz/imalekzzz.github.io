@@ -57,6 +57,27 @@ const PROJECTS = [
     link: "https://imalekzzz.github.io/IKnowYourOS",
     github: "https://github.com/imalekzzz/IKnowYourOS"
   },
+ {
+  banner: "Pictures/Projects/swiftyy.png",
+  icon: "Pictures/Projects/swifty.png",
+
+  title: "Swifty",
+  description: "A local music player",
+
+  keywords: [
+   "music",
+   "material",
+   "google",
+   "Rust",
+   "C++",
+   "Qt",
+   "Windows",
+   "MacOS",
+   "Linux"
+   ],
+  link: "https://imalekzzz.github.io/Swifty",
+  github: "https://github.com/ImAlekzzz/Swifty",
+  docs: "https://imalekzzz.gitbook.io/swifty"
 ];
 
 
