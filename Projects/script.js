@@ -78,6 +78,7 @@ const PROJECTS = [
   link: "https://imalekzzz.github.io/Swifty",
   github: "https://github.com/ImAlekzzz/Swifty",
   docs: "https://imalekzzz.gitbook.io/swifty"
+ }
 ];
 
 
